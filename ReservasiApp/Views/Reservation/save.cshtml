@@ -1,0 +1,43 @@
+﻿
+@model ReservasiApp.Models.tblT_Reservasi
+
+<h2>Save</h2>
+@using (Html.BeginForm("save", "reservation", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.Reservasi_PK > 0)
+    {
+        @Html.HiddenFor(a => a.Reservasi_PK)
+    }
+
+    <div class="form-group">
+        <label>Ruangan</label>
+        @Html.TextBoxFor(a => a.Ruangan_FK, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Ruangan_FK)
+    </div>
+    <div class="form-group">
+        <label>Subject</label>
+        @Html.TextBoxFor(a => a.SubjectReservasi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.SubjectReservasi)
+    </div>
+    <div class="form-group">
+        <label>Tanggal</label>
+        @Html.TextBoxFor(model => model.TanggalReservasi, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
+        @Html.ValidationMessageFor(a => a.TanggalReservasi)
+    </div>
+    <div class="form-group">
+        <label>Jam Mulai</label>
+        @Html.TextBoxFor(a => a.JamMulai, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.JamMulai)
+    </div>
+    <div class="form-group">
+        <label>Jam</label>
+        @Html.TextBoxFor(a => a.JamSelesai, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.JamSelesai)
+    </div>
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
+
+
